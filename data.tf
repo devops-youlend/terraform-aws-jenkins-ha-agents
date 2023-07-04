@@ -298,7 +298,7 @@ data "aws_security_group" "us_bastion_sg" {
 
 data "aws_caller_identity" "current" {}
 
-data "aws_subnet_ids" "private" {
+data "aws_subnets" "private" {
   vpc_id = data.aws_vpc.vpc.id
 
   tags = {
@@ -306,7 +306,7 @@ data "aws_subnet_ids" "private" {
   }
 }
 
-data "aws_subnet_ids" "us_private" {
+data "aws_subnets" "us_private" {
   provider = aws.us
   vpc_id   = data.aws_vpc.us_vpc.id
   tags = {
@@ -314,7 +314,7 @@ data "aws_subnet_ids" "us_private" {
   }
 }
 
-data "aws_subnet_ids" "public" {
+data "aws_subnets" "public" {
   vpc_id = data.aws_vpc.vpc.id
 
   tags = {
