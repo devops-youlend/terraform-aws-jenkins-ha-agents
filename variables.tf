@@ -158,6 +158,19 @@ variable "extra_master_userdata_merge" {
   type        = string
   default     = "list(append)+dict(recurse_array)+str()"
 }
+
+variable "extra_qa_agent_userdata" {
+  description = "Extra qa agent user-data to add to the default built-in."
+  type        = string
+  default     = ""
+}
+
+variable "extra_qa_agent_userdata_merge" {
+  description = "Control how cloud-init merges extra qa agent user-data sections."
+  type        = string
+  default     = "list(append)+dict(recurse_array)+str()"
+}
+
 variable "master_instance_type" {
   description = "The type of instances to use for the master instance."
   type        = string
