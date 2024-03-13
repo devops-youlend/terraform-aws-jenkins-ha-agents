@@ -1,4 +1,3 @@
-code .
 variable "admin_password" {
   description = "The master admin password. Used to bootstrap and login to the master. Also pushed to ssm parameter store for posterity."
   type        = string
