@@ -51,7 +51,7 @@ resource "aws_autoscaling_group" "agent_qa_asg" {
 
 resource "aws_launch_template" "agent_qa_lt" {
   name        = "${var.application}-agent-qa-lt"
-  description = "${var.application} database agent launch template"
+  description = "${var.application} qa agent launch template"
 
   iam_instance_profile {
     name = aws_iam_instance_profile.agent_ip.name
