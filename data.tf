@@ -79,8 +79,8 @@ data "template_cloudinit_config" "qa_agent_init" {
 
   part {
     content_type = "text/cloud-config"
-    content      = var.extra_qa_agent_userdata
-    merge_type   = var.extra_qa_agent_userdata_merge
+    content      = var.extra_agent_userdata
+    merge_type   = var.extra_agent_userdata_merge
   }
 
   part {
@@ -94,7 +94,7 @@ data "template_file" "qa_agent_write_files" {
   template = file("${path.module}/init/qa-agent-write-files.cfg")
 
   vars = {
-    swarm_label      = "swarm-eu" #All Labels you want Agent to have must be separated with space
+    swarm_label      = "swarm-qa" #All Labels you want Agent to have must be separated with space
     agent_logs       = aws_cloudwatch_log_group.agent_logs.name
     aws_region       = var.region
     executors        = var.executors
@@ -306,48 +306,3 @@ data "aws_kms_key" "ssm_key" {
   key_id = var.ssm_kms_key
 }
 
-
-##################################################################
-# QA Agent User Data
-##################################################################
-
-data "template_cloudinit_config" "agent_qa_init" {
-  gzip          = true
-  base64_encode = true
-
-  part {
-    filename     = "agent.cfg"
-    content_type = "text/cloud-config"
-    content      = data.template_file.agent_qa_write_files.rendered
-  }
-
-  part {
-    content_type = "text/cloud-config"
-    content      = data.template_file.agent_runcmd.rendered
-  }
-
-  part {
-    content_type = "text/cloud-config"
-    content      = var.extra_agent_userdata
-    merge_type   = var.extra_agent_userdata_merge
-  }
-
-  part {
-    content_type = "text/cloud-config"
-    content      = data.template_file.agent_end.rendered
-    merge_type   = "list(append)+dict(recurse_array)+str()"
-  }
-}
-
-data "template_file" "agent_qa_write_files" {
-  template = file("${path.module}/init/agent-write-files.cfg")
-
-  vars = {
-    swarm_label      = "swarm-qa"
-    agent_logs       = aws_cloudwatch_log_group.agent_logs.name
-    aws_region       = var.region
-    executors        = var.executors
-    swarm_version    = var.swarm_version
-    jenkins_username = var.jenkins_username
-  }
-}
