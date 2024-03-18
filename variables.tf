@@ -159,10 +159,33 @@ variable "extra_master_userdata_merge" {
   default     = "list(append)+dict(recurse_array)+str()"
 }
 
-variable "instance_type" {
-  description = "The type of instances to use for both ASG's. The first value in the list will be set as the master instance."
-  type        = list(string)
+variable "extra_qa_agent_userdata" {
+  description = "Extra qa agent user-data to add to the default built-in."
+  type        = string
+  default     = ""
 }
+
+variable "extra_qa_agent_userdata_merge" {
+  description = "Control how cloud-init merges extra qa agent user-data sections."
+  type        = string
+  default     = "list(append)+dict(recurse_array)+str()"
+}
+
+variable "master_instance_type" {
+  description = "The type of instances to use for the master instance."
+  type        = string
+  default     = "m5.16xlarge"
+}
+variable "agent_instance_type" {
+ description = "The type of instances to use for the agent instance."
+ type        = string
+ default     = "t3.medium"
+ }
+variable "qa_agent_instance_type" {
+ description = "The type of instances to use for the QA agent instance."
+ type        = string
+ default     = "t3.large"
+ }
 
 variable "jenkins_version" {
   description = "The version number of Jenkins to use on the master. Change this value when a new version comes out, and it will update the launch configuration and the autoscaling group."

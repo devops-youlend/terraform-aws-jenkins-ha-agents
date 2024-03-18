@@ -19,7 +19,7 @@ resource "aws_autoscaling_group" "agent_qa_asg" {
     instances_distribution {
       #on_demand_base_capacity                  = (var.enable_spot_insances==1)?0:100
       on_demand_percentage_above_base_capacity = (var.enable_spot_insances == 1) ? 0 : 100
-      spot_instance_pools                      = (var.enable_spot_insances == 1) ? length(var.instance_type) : 0
+      spot_instance_pools                      = (var.enable_spot_insances == 1) ? length(var.qa_agent_instance_type) : 0
     }
 
     launch_template {
@@ -29,7 +29,7 @@ resource "aws_autoscaling_group" "agent_qa_asg" {
       }
 
       override {
-        instance_type = var.instance_type[2]
+        instance_type = var.qa_agent_instance_type
       }
 
     }
@@ -51,7 +51,7 @@ resource "aws_autoscaling_group" "agent_qa_asg" {
 
 resource "aws_launch_template" "agent_qa_lt" {
   name        = "${var.application}-agent-qa-lt"
-  description = "${var.application} database agent launch template"
+  description = "${var.application} qa agent launch template"
 
   iam_instance_profile {
     name = aws_iam_instance_profile.agent_ip.name
@@ -77,8 +77,8 @@ resource "aws_launch_template" "agent_qa_lt" {
   key_name      = var.key_name
   ebs_optimized = false
 
-  instance_type = var.instance_type[2]
-  user_data     = data.template_cloudinit_config.agent_qa_init.rendered
+  instance_type = var.qa_agent_instance_type
+  user_data     = data.template_cloudinit_config.qa_agent_init.rendered
 
   monitoring {
     enabled = true
