@@ -52,6 +52,7 @@ resource "aws_iam_role_policy" "master_inline_policy" {
     {
       "Action": [
         "ec2:DescribeInstances",
+        "ec2:DescribeTags",
         "s3:GetObject",
         "s3:GetObjectAcl",
         "s3:PutObject",
