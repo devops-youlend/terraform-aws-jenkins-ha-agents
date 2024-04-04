@@ -116,6 +116,7 @@ resource "aws_iam_role_policy" "agent_inline_policy" {
     {
       "Action": [
         "ec2:DescribeInstances",
+        "ec2:DescribeTags",
         "autoscaling:DescribeAutoScalingGroups",
         "ecr:DescribeImages"
       ],
