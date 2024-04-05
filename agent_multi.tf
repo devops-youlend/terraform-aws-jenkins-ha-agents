@@ -18,7 +18,7 @@ resource "aws_autoscaling_group" "agent_multi_deploy_asg" {
 
     instances_distribution {
       on_demand_percentage_above_base_capacity = (var.enable_spot_insances == 1) ? 0 : 100
-      spot_instance_pools                      = (var.enable_spot_insances == 1) ? length(var.agent_instance_type) : 0
+      spot_instance_pools                      = (var.enable_spot_insances == 1) ? length(var.agent_multi_deploy_instance_type) : 0
     }
 
     launch_template {
@@ -28,7 +28,7 @@ resource "aws_autoscaling_group" "agent_multi_deploy_asg" {
       }
 
       override {
-        instance_type = var.agent_instance_type
+        instance_type = var.agent_multi_deploy_instance_type
       }
 
     }
@@ -72,7 +72,7 @@ resource "aws_launch_template" "agent_multi_deploy_lt" {
   key_name      = var.key_name
   ebs_optimized = false
 
-  instance_type = var.agent_instance_type
+  instance_type = var.agent_multi_deploy_instance_type
   user_data     = data.template_cloudinit_config.agent_multi_deploy_init.rendered
 
   monitoring {
