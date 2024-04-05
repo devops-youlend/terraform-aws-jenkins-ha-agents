@@ -181,6 +181,13 @@ variable "agent_instance_type" {
  type        = string
  default     = "t3.medium"
  }
+
+ variable "agent_multi_deploy_instance_type" {
+  description = "The type of instances to use for the multi deployment instance."
+  type        = string
+  default     = "c5.2xlarge"
+}
+
 variable "qa_agent_instance_type" {
  description = "The type of instances to use for the QA agent instance."
  type        = string
