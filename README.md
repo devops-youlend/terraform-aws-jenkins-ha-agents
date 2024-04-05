@@ -197,16 +197,16 @@ No modules.
 | Name | Type |
 |------|------|
 | [aws_autoscaling_group.agent_asg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group) | resource |
-| [aws_autoscaling_group.agent_db_asg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group) | resource |
+| [aws_autoscaling_group.agent_multi_deploy_asg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group) | resource |
 | [aws_autoscaling_group.master_asg](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_group) | resource |
-| [aws_autoscaling_policy.agent_db_scale_down_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_policy) | resource |
-| [aws_autoscaling_policy.agent_db_scale_up_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_policy) | resource |
+| [aws_autoscaling_policy.agent_multi_deploy_scale_down_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_policy) | resource |
+| [aws_autoscaling_policy.agent_multi_deploy_scale_up_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_policy) | resource |
 | [aws_autoscaling_policy.agent_scale_down_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_policy) | resource |
 | [aws_autoscaling_policy.agent_scale_up_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_policy) | resource |
 | [aws_autoscaling_schedule.agent_asg_scale_down](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_schedule) | resource |
 | [aws_autoscaling_schedule.agent_asg_scale_up](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_schedule) | resource |
-| [aws_autoscaling_schedule.agent_db_asg_scale_down](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_schedule) | resource |
-| [aws_autoscaling_schedule.agent_db_asg_scale_up](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_schedule) | resource |
+| [aws_autoscaling_schedule.agent_multi_deploy_asg_scale_down](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_schedule) | resource |
+| [aws_autoscaling_schedule.agent_multi_deploy_asg_scale_up](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/autoscaling_schedule) | resource |
 | [aws_cloudwatch_log_group.agent_logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_log_group.master_logs](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_log_group) | resource |
 | [aws_cloudwatch_metric_alarm.agent_cpu_alarm](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/cloudwatch_metric_alarm) | resource |
@@ -227,7 +227,7 @@ No modules.
 | [aws_iam_role_policy.master_secret_manager_inline_policy](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy) | resource |
 | [aws_iam_role_policy_attachment.agent_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
 | [aws_iam_role_policy_attachment.master_policy_attachment](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/iam_role_policy_attachment) | resource |
-| [aws_launch_template.agent_db_lt](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
+| [aws_launch_template.agent_multi_deploy_lt](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
 | [aws_launch_template.agent_lt](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
 | [aws_launch_template.master_lt](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/launch_template) | resource |
 | [aws_lb.private_lb](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/lb) | resource |
@@ -249,10 +249,10 @@ No modules.
 | [aws_subnets.private](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnets) | data source |
 | [aws_subnets.public](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/subnets) | data source |
 | [aws_vpc.vpc](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/vpc) | data source |
-| [template_cloudinit_config.agent_db_init](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/cloudinit_config) | data source |
+| [template_cloudinit_config.agent_multi_deploy_init](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/cloudinit_config) | data source |
 | [template_cloudinit_config.agent_init](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/cloudinit_config) | data source |
 | [template_cloudinit_config.master_init](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/cloudinit_config) | data source |
-| [template_file.agent_db_write_files](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
+| [template_file.agent_multi_deploy_write_files](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.agent_end](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.agent_runcmd](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
 | [template_file.agent_write_files](https://registry.terraform.io/providers/hashicorp/template/latest/docs/data-sources/file) | data source |
@@ -265,7 +265,7 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_admin_password"></a> [admin\_password](#input\_admin\_password) | The master admin password. Used to bootstrap and login to the master. Also pushed to ssm parameter store for posterity. | `string` | n/a | yes |
-| <a name="input_agent_db_volume_size"></a> [agent\_db\_volume\_size](#input\_agent\_db\_volume\_size) | The size of the database agent volume. | `number` | `16` | no |
+| <a name="input_agent_multi_deploy_volume_size"></a> [agent\_multi_deploy\_volume\_size](#input\_agent\_multi_deploy\_volume\_size) | The size of the database agent volume. | `number` | `16` | no |
 | <a name="input_agent_lt_version"></a> [agent\_lt\_version](#input\_agent\_lt\_version) | The version of the agent launch template to use. Only use if you need to programatically select an older version of the launch template. Not recommended to change. | `string` | `"$Latest"` | no |
 | <a name="input_agent_max"></a> [agent\_max](#input\_agent\_max) | The maximum number of agents to run in the agent ASG. | `number` | `4` | no |
 | <a name="input_agent_min"></a> [agent\_min](#input\_agent\_min) | The minimum number of agents to run in the agent ASG. | `number` | `2` | no |
@@ -306,9 +306,9 @@ No modules.
 | <a name="input_region"></a> [region](#input\_region) | The AWS region to deploy the infrastructure too. | `string` | n/a | yes |
 | <a name="input_retention_in_days"></a> [retention\_in\_days](#input\_retention\_in\_days) | How many days to retain cloudwatch logs. | `number` | `90` | no |
 | <a name="input_scale_down_number"></a> [scale\_down\_number](#input\_scale\_down\_number) | Number of agents to destroy when scaling down. | `number` | `-1` | no |
-| <a name="input_scale_down_number_db"></a> [scale\_down\_number\_db](#input\_scale\_down\_number\_db) | Number of database agents to destroy when scaling down. | `number` | `-1` | no |
+| <a name="input_scale_down_number_multi_deploy"></a> [scale\_down\_number\_multi_deploy](#input\_scale\_down\_number\_multi_deploy) | Number of database agents to destroy when scaling down. | `number` | `-1` | no |
 | <a name="input_scale_up_number"></a> [scale\_up\_number](#input\_scale\_up\_number) | Number of agents to create when scaling up. | `number` | `1` | no |
-| <a name="input_scale_up_number_db"></a> [scale\_up\_number\_db](#input\_scale\_up\_number\_db) | Number of database agents to create when scaling up. | `number` | `1` | no |
+| <a name="input_scale_up_number_multi_deploy"></a> [scale\_up\_number\_multi_deploy](#input\_scale\_up\_number\_multi_deploy) | Number of database agents to create when scaling up. | `number` | `1` | no |
 | <a name="input_ssl_certificate"></a> [ssl\_certificate](#input\_ssl\_certificate) | The name of the SSL certificate to use on the load balancer. | `string` | n/a | yes |
 | <a name="input_ssm_kms_key"></a> [ssm\_kms\_key](#input\_ssm\_kms\_key) | The alias or arn of the KMS key that is designated for SSM session encryption | `string` | n/a | yes |
 | <a name="input_ssm_parameter"></a> [ssm\_parameter](#input\_ssm\_parameter) | The full ssm parameter path that will house the api key and master admin password. Also used to grant IAM access to this resource. | `string` | n/a | yes |
@@ -381,7 +381,7 @@ Agent nodes are also set in an autoscaling group, using the Amazon Linux 2 AMI, 
 
 Agents connect to the master node through the Jenkins SWARM plugin. The agents are smart enough to get the master's IP address using the AWS CLI and API key from the parameter store. Agents launch, configure themselves, and connect to the master. If agents cannot connect or get disconnected, the agent will self-terminate, causing the autoscaling group to create a new instance. This helps in the case that the agents launch, and the master has not yet published the API key to the parameter store. After it is published, the agents and master will sync up. If the master is terminated, the agents will automatically terminate.
 
-Agents are spot instances, keeping cost down. Optinally you can disable it. It is useful, when jenkins used to deploy infrastructure resources with terraform. Spot instances can be removed by AWS with 2 minutes warning and that can cause errors in terraform state, if it is a long running deployment. 
+Agents are spot instances, keeping cost down. Optinally you can disable it. It is useful, when jenkins used to deploy infrastructure resources with terraform. Spot instances can be removed by AWS with 2 minutes warning and that can cause errors in terraform state, if it is a long running deployment.
 
 ### Agent Scaling Details
 
