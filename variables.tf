@@ -14,8 +14,8 @@ variable "agent_max" {
   type        = number
 }
 
-variable "agent_db_max" {
-  description = "The maximum number of database agents to run in the agent ASG."
+variable "agent_multi_deploy_max" {
+  description = "The maximum number of multi deployment agents to run in the agent ASG."
   type        = number
 }
 
@@ -42,8 +42,8 @@ variable "agent_volume_size" {
   default     = 16
 }
 
-variable "agent_db_volume_size" {
-  description = "The size of the database agent volume."
+variable "agent_multi_deploy_volume_size" {
+  description = "The size of the multi deployment agent volume."
   type        = number
   default     = 16
 }
@@ -255,8 +255,8 @@ variable "scale_up_number" {
   default     = 1
 }
 
-variable "scale_down_number_db" {
-  description = "Number of database agents to destroy when scaling down."
+variable "scale_down_number_multi_deploy" {
+  description = "Number of mutli deployment agents to destroy when scaling down."
   type        = number
   default     = -1
 }
@@ -267,8 +267,8 @@ variable "scale_down_number_qa" {
   default     = -1
 }
 
-variable "scale_up_number_db" {
-  description = "Number of database agents to create when scaling up."
+variable "scale_up_number_multi_deploy" {
+  description = "Number of multi deployment agents to create when scaling up."
   type        = number
   default     = 1
 }

@@ -203,14 +203,14 @@ resource "aws_efs_file_system" "master_efs" {
 # Database Agent User Data
 ##################################################################
 
-data "template_cloudinit_config" "agent_db_init" {
+data "template_cloudinit_config" "agent_multi_deploy_init" {
   gzip          = true
   base64_encode = true
 
   part {
     filename     = "agent.cfg"
     content_type = "text/cloud-config"
-    content      = data.template_file.agent_db_write_files.rendered
+    content      = data.template_file.agent_multi_deploy_write_files.rendered
   }
 
   part {
@@ -231,11 +231,11 @@ data "template_cloudinit_config" "agent_db_init" {
   }
 }
 
-data "template_file" "agent_db_write_files" {
+data "template_file" "agent_multi_deploy_write_files" {
   template = file("${path.module}/init/agent-write-files.cfg")
 
   vars = {
-    swarm_label      = "swarm-db"
+    swarm_label      = "swarm-multi-deploy"
     agent_logs       = aws_cloudwatch_log_group.agent_logs.name
     aws_region       = var.region
     executors        = var.executors
